@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+    <title>Like Hero To Zero</title>
+</h:head>
+    
+<h:body>
+    <header>
+        <div class="flex-header">
+            <img class="flex-item" id="kopf_links" src="./bilder/logo.jpg" alt="logo"/>
+            <div class="flex-item" id="titel">
+                <h2>Like Hero To Zero</h2>
+                <p>Weltweite CO2 Emissionen</p>
+            </div>
+        </div>
+    </header>
+    <br />
+    <main>
+        <h1>Weltweite CO2-Emissionen Jahre 2018 bis 2021 - Übersicht</h1>
+        <p>CO2-Emissionen der Emmisions Database for Global Atmospheric Research (EDGAR)</p>
+        <br />
+        <br/>
+        <p:dataTable var="emission" value="#{emissionenListe.emissionenListe}" paginator="true" rows="10">
+             <p:column headerText="Land">
+                 <h:outputText value="#{emission.country}" />
+             </p:column>
+
+             <p:column headerText="2018">
+                 <h:outputText value="#{emission.year2018}" />
+             </p:column>
+
+             <p:column headerText="2019">
+                 <h:outputText value="#{emission.year2019}" />
+             </p:column>
+
+             <p:column headerText="2020">
+                 <h:outputText value="#{emission.year2020}" />
+             </p:column>
+
+             <p:column headerText="2021">
+                 <h:outputText value="#{emission.year2021}" />
+             </p:column>
+         </p:dataTable>
+
+        <br />
+        <br />
+        <h1>Anmelden</h1>
+        <p>Melden Sie sich mit einem bestehenden Nutzernamen an, um die Daten anzupassen.</p>
+        <div id="button">
+            <h:button value="Login" outcome="login" style="font-size:20"/>
+        </div>
+        <br/>
+    </main>
+    <footer>
+        <br/>
+        <p>Dies ist eine fiktive Seite</p>
+    </footer>
+</h:body>
+</html>

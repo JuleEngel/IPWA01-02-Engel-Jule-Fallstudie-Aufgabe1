@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+  <title>Like Hero To Zero</title>
+</h:head>
+<h:body>
+    <header>
+        <div class="flex-header">
+            <img class="flex-item" id="kopf_links" src="./bilder/logo.jpg" alt="logo"/>
+            <div class="flex-item" id="titel">
+                <h2>Like Hero To Zero</h2>
+                <p>Weltweite CO2 Emissionen</p>
+            </div>
+        </div>
+    </header>
+    <br />
+    <main>
+        <h1>Herzlich Willkommen, 
+            <h:outputText value="#{loginController.nutzerLogin.nutzerName}"/>
+        </h1>
+        <br/>
+        <h1>Änderungen der Daten:</h1>
+        <div class="flex-tabelle">
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputText rendered="#{emissionsController.isEmpty==true}" value=" "/>
+                    <h:commandLink value="zurück" action="#{emissionsController.zurueck()}"
+                                rendered="#{emissionsController.index > 0}"/>
+                    <h:outputText rendered="#{emissionsController.index == 0}" value=" "/>
+                    <h:outputText rendered="#{emissionsControllerisEmpty==true}" value=" "/>
+                    <h:commandLink value="vor" action="#{emissionsController.vor()}"
+                                rendered="#{emissionsController.index != emissionsController.maxIndex}"/>
+                    <h:outputText rendered="#{emissionsController.index == emissionsController.maxIndex}" value=" "/>
+                    <h:outputText value="#{emissionsController.index+1} von #{emissionsController.maxIndex+1}" 
+                                rendered="#{emissionsController.isEmpty==false}"/>
+                    <h:outputText value=" " rendered="#{emissionsController.isEmpty==true}"/>
+                    
+                    <h:outputLabel value="Name:" for="name"/>
+                    <h:outputText id="name" value="#{emissionsController.emissionenListe.country}"/>
+                    <h:outputText value=" "/>
+
+                    <h:outputLabel value="2018" for="year2018"/>
+                    <h:inputText id="year2018" value="#{emissionsController.emissionenListe.year2018}" required="true" 
+                                requiredMessage="Bitte geben Sie einen Wert ein"
+                                validator="#{emissionsController.validateEmission}">
+                    </h:inputText>
+                    <h:message for="year2018" styleClass="error"/>
+
+                    <h:outputLabel value="2019" for="year2019"/>
+                    <h:inputText id="year2019" value="#{emissionsController.emissionenListe.year2019}" required="true" 
+                                requiredMessage="Bitte geben Sie einen Wert ein"
+                                validator="#{emissionsController.validateEmission}">
+                    </h:inputText>
+                    <h:message for="year2019" styleClass="error"/>
+
+                    <h:outputLabel value="2020" for="year2020"/>
+                    <h:inputText id="year2020" value="#{emissionsController.emissionenListe.year2020}" required="true" 
+                                requiredMessage="Bitte geben Sie einen Wert ein"
+                                validator="#{emissionsController.validateEmission}">
+                    </h:inputText>
+                    <h:message for="year2020" styleClass="error"/>
+
+                    <h:outputLabel value="2021" for="year2021"/>
+                    <h:inputText id="year2021" value="#{emissionsController.emissionenListe.year2021}" required="true" 
+                                requiredMessage="Bitte geben Sie einen Wert ein"
+                                validator="#{emissionsController.validateEmission}">
+                    </h:inputText>
+                    <h:message for="year2021" styleClass="error"/>
+                    
+                    <h:outputText rendered="#{emissionsController.isEmpty==true}" value=" "/>
+                    <h:commandLink value="zurück" action="#{emissionsController.zurueck()}"
+                                rendered="#{emissionsController.index > 0}"/>
+                    <h:outputText rendered="#{emissionsController.index == 0}" value=" "/>
+                    <h:outputText rendered="#{emissionsController.isEmpty==true}" value=" "/>
+                    <h:commandLink value="vor" action="#{emissionsController.vor()}"
+                                rendered="#{emissionsController.index != emissionsController.maxIndex}"/>
+                    <h:outputText rendered="#{emissionsController.index == emissionsController.maxIndex}" value=" "/>
+                    <h:outputText value=" "/>
+                </h:panelGrid>
+                <br/>
+                <div id="button">
+                    <h:commandButton value="Löschen" action="#{emissionsController.deleteEmission(emissionsController.emissionenListe)}" 
+                                rendered="#{emissionsController.isEmpty == false}"/>
+                    <h:commandButton value="Änderungen speichern" action="#{emissionsController.updateEmission(emissionsController.emissionenListe)}"/>
+                    <h:message for="submit"/>
+                </div>
+                <br/>
+            </h:form>
+        </div>
+        <br />
+        <h1>Neue Emission erstellen</h1>
+        <div id="button">
+            <h:button value="Neue Emission" outcome="erstellen" style="font-size:20"/>
+        </div>
+        <br />
+        <h1>Logout</h1>
+        <div id="button">
+            <h:button value="Logout" outcome="index" style="font-size:20"/>
+        </div>
+    </main>
+    <footer>
+        <br/>
+        <p>Dies ist eine fiktive Seite</p>
+    </footer>
+</h:body>
+</html>
